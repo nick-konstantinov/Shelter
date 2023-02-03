@@ -235,7 +235,7 @@ p {
     transition: background-color 0.2s, border-color 0.2s;
 }
 
-.btn-lrn:hover, .btnSlider:hover {
+.btn-lrn:hover, .btn-slider:hover {
     background-color: #FDDCC4;
     border-color: #FDDCC4;
     cursor: pointer;
