@@ -320,6 +320,12 @@ p {
     font-size: 2rem;
     cursor: pointer;
 
+    transition: background-color 0.2s;
+
+}
+
+.our-friends__btn:hover:not(.our-friends__btn:disabled) {
+    background-color: #F1CDB3;
 }
 
 .our-friends__btn span {
