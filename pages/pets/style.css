@@ -365,7 +365,7 @@ p {
 .footer {
     height: 100%;
     padding-top: 4rem;
-    background: url(./../../assets/images/main/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, rgb(91, 72, 58) 0%, rgb(38, 36, 37) 100%), rgb(33, 31, 32);
+    background: url(./../../assets/images/general/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, rgb(91, 72, 58) 0%, rgb(38, 36, 37) 100%), rgb(33, 31, 32);
 }
 
 .footer__inner {
