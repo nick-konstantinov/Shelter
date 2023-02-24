@@ -363,7 +363,7 @@ p {
 /* Footer */
 
 .footer {
-    height: 35rem;
+    height: 100%;
     padding-top: 4rem;
     background: url(./../../assets/images/main/noise_transparent@2x.png), radial-gradient(100% 215.42% at 0% 0%, rgb(91, 72, 58) 0%, rgb(38, 36, 37) 100%), rgb(33, 31, 32);
 }
@@ -371,6 +371,11 @@ p {
 .footer__inner {
     display: flex;
     justify-content: space-between;
+}
+
+.footer__img {
+    position: relative;
+    bottom: -0.1rem;
 }
 
 .footer__content {
