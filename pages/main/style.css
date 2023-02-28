@@ -872,21 +872,23 @@ p {
     }
 
     .burger-menu .header__nav {
-        position: absolute;
-        top: 24.8rem;
-        left: 0;
-        width: 100%;
+        padding-top: 24.8rem;
+        width: 24.3rem;
         height: 100%;
+        margin-left: auto;
+        margin-right: auto;
         display: flex;
         flex-direction: column;
         align-items: center;
         justify-content: start;
-        padding: 5rem 0;
-        overflow: auto;
+        padding-bottom: 5rem;
+        overflow: hidden;
     }
 
     .burger-menu .header__nav > ul > li {
         width: 100%;
+        padding-left: 0;
+        padding-right: 0;
     }
 
     .burger-menu .header__nav > ul > li > a {
