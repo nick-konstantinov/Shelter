@@ -182,7 +182,6 @@ p {
     width: 3rem;
     padding: 1.2rem 0;
     position: absolute;
-    top: 4.9rem;
     right: 5.3rem;
     z-index: 2;
 
@@ -216,7 +215,7 @@ p {
 .burger-nav__item::before, .burger-nav__item::after {
     content: "";
     width: 100%;
-    height: 2px;
+    height: 1.5px;
     background-color: #F1CDB3;
     position: absolute;
     left: 0;
@@ -224,11 +223,11 @@ p {
 }
 
 .burger-nav__item::before {
-    top: -8px;
+    top: -10px;
 }
 
 .burger-nav__item::after {
-    bottom: -8px;
+    bottom: -10px;
 }
 
 .burger-nav.active {
@@ -621,6 +620,19 @@ p {
 
 /* --- Media --- */
 
+/* @media (max-width: 1280px) */
+
+@media (max-width: 1279px) {
+
+    /* Help */
+
+    .help__item {
+        margin: 0 10rem 5.5rem 10rem;
+        min-width: 17rem;
+        min-height: 11.3rem;
+    }
+}
+
 /* @media (max-width: 1199px) */
 
 @media (max-width: 1199px) {
@@ -663,7 +675,7 @@ p {
         padding-top: 3rem;
     }
 
-    .hidden {
+    .hidden_w {
         display: none;
     }
 
@@ -685,9 +697,8 @@ p {
     }
 
     .help__item {
-        margin: 0 3rem 5.5rem 3rem;
-        min-width: 17rem;
-        min-height: 11.3rem;
+        margin-left: 7rem;
+        margin-right: 7rem;
     }
 
     .help__inner {
@@ -703,6 +714,18 @@ p {
     .donation__btn-card {
         padding-top: 1rem;
         padding-bottom: 1rem;
+    }
+}
+
+/* @media (max-width: 991px) */
+
+@media (max-width: 1010px) {
+
+    /* Help */
+
+    .help__item {
+        margin-left: 5rem;
+        margin-right: 5rem;
     }
 }
 
@@ -780,6 +803,13 @@ p {
         margin-left: 0.1rem;
     }
 
+    /* Help */
+
+    .help__item {
+        margin-left: 3rem;
+        margin-right: 3rem;
+    }
+
     /* Donation */
 
     .donation__inner {
@@ -829,6 +859,12 @@ p {
 
 @media (max-width: 767.5px) {
 
+    /* Grid */
+
+    .container {
+        padding: 0 10px;
+    }
+
     /* Intro */
 
     .intro img {
@@ -872,7 +908,7 @@ p {
     }
 
     .burger-menu .header__nav {
-        padding-top: 24.8rem;
+        padding-top: 23rem;
         width: 24.3rem;
         height: 100%;
         margin-left: auto;
@@ -895,7 +931,7 @@ p {
         width: 100%;
         display: flex;
         justify-content: center;
-        padding: 2rem 0;
+        padding: 2.15rem 0;
         font-size: 3.2rem;
         line-height: 1.6;
         color: #CDCDCD;
@@ -909,5 +945,326 @@ p {
         bottom: 2rem;
     }
 
+    /* Not Only */
+
+    .not-only__content {
+        margin: 0;
+    }
+
+    .not-only__description {
+        text-align: center;
+    }
+
+    .not-only__title {
+        max-width: 100%;
+        font-size: 3.6rem;
+    }
+
+    /* About */
+
+    .about__content {
+        text-align: center;
+    }
+
+    .about__inner {
+        padding-top: 2.9rem;
+    }
+
+    .about__title {
+        max-width: 100%;
+    }
+
+    /* Our Friends */
+
+    .hidden_j {
+        display: none;
+    }
+
+    /* Donation */
+
+    .donation__inner {
+        padding: 4.2rem 0 9rem;
+    }
+
+    .donation__content {
+        text-align: center;
+    }
+
+    .donation__title {
+        width: 100%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .donation__photo {
+        width: 100%;
+    }
+
 }
 
+/* @media (max-width: 710px) */
+
+@media (max-width: 710px) {
+
+    /* Help */
+
+    .help__list {
+        max-width: 35rem;
+        justify-content: flex-start;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .help__item {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .help__icon {
+        max-width: 5rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .help__icon img {
+        width: 100%;
+    }
+
+    .help__text {
+        font-size: 1.5rem;
+    }
+}
+
+/* @media (max-width: 469px) */
+
+@media (max-width: 469px) {
+
+    /* Intro */
+
+    .intro img {
+        width: 26rem;
+    }
+
+    /* Not Only */
+
+    .not-only__title {
+        max-width: 23rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2.5rem;
+        letter-spacing: 0.06em;
+    }
+
+    .not-only__text {
+        font-size: 1.5rem;
+        margin-top: 4.1rem;
+    }
+
+    .not-only__photo {
+        position: static;
+        display: flex;
+        justify-content: center;
+        margin-top: 10.5rem;
+        margin-left: 4.3rem;
+        width: 100%;
+    }
+
+    /* About */
+
+    .about__title {
+        max-width: 25rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2.5rem;
+        letter-spacing: 0.06em;
+        line-height: 1.25;
+    }
+
+    .about__text {
+        position: relative;
+        margin-top: 2.7rem;
+        max-width: 27rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: justify;
+        font-size: 1.5rem;
+        line-height: 1.6;
+    }
+
+    .about__text + .about__text {
+        margin-top: 2rem;
+    }
+
+    .about__item {
+        margin-bottom: 3.2rem;
+    }
+
+    .about__photo {
+        max-width: 26rem;
+    }
+
+    .about__inner {
+        padding-bottom: 4rem;
+        padding-left: 0;
+    }
+
+    /* Our Friends */
+
+    .our-friends__inner {
+        padding: 4.1rem 0 4.4rem;
+    }
+
+    .our-friends__title {
+        font-size: 2.5rem;
+    }
+
+    .our-friends__slider {
+        margin: 4.2rem 0 11.3rem;
+    }
+
+    .btn-slider_prev, .btn-slider_next {
+        top: 45.5rem;
+    }
+    .btn-slider_prev {
+        left: 5.7rem;
+    }
+
+    .btn-slider_next {
+        right: 5.7rem;
+    }
+
+    /* Help */
+
+    .help__inner {
+        padding: 4.1rem 0 1.2rem;
+    }
+
+    .help__title {
+        max-width: 23rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2.5rem;
+    }
+
+    .help__list {
+        margin-top: 4rem;
+    }
+
+    /* Donation */
+
+    .donation__inner {
+        padding-top: 5.2rem;
+        padding-bottom: 4.1rem;
+    }
+
+    .donation__title {
+        max-width: 22rem;
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 2.5rem;
+    }
+
+    .donation__name-bank {
+        margin-top: 2.4rem;
+        font-size: 1.5rem;
+        line-height: 1.1;
+        letter-spacing: 0;
+    }
+
+    .donation__number-card {
+        font-size: 1.5rem;
+    }
+
+    .donation__btn-card {
+        margin-top: 2.5rem;
+        padding-top: 1.3rem;
+        padding-bottom: 1.2rem;
+    }
+
+    .donation__info {
+        max-width: 28rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: justify;
+    }
+
+    .donation__photo-wrap {
+        display: flex;
+        justify-content: center;
+    }
+
+    .donation__photo {
+        max-width: 26rem;
+        margin-top: 3.3rem;
+    }
+
+    /* Footer */
+
+    .footer__item {
+        display: flex;
+        justify-content: center;
+    }
+
+    .footer__title {
+        width: 100%;
+        max-width: 27rem;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+        font-size: 2.5rem;
+    }
+
+    .footer__email, .footer__phone, .footer__address {
+        justify-content: center;
+    }
+
+    .footer__item {
+        margin-bottom: 2.2rem;
+    }
+
+    .footer__item:last-child {
+        margin-bottom: 0;
+    }
+
+    .footer__content_map {
+        width: 100%;
+    }
+
+    .footer__address {
+        margin-top: 4rem;
+        min-width: 30rem;
+    }
+
+    .footer__address:last-child {
+        margin-top: 4.1rem;
+        justify-content: left;
+    }
+
+    .footer__img {
+        max-width: 26rem;
+        margin-top: 1.8rem;
+        bottom: 0;
+    }
+
+}
+
+/* @media (max-width: 360px) */
+
+@media (max-width: 360px) {
+    /* Help */
+
+    .help__list {
+        justify-content: space-between;
+    }
+
+    .help__item {
+        min-width: 13rem;
+        margin-left: 0.4rem;
+        margin-right: 0.4rem;
+        margin-bottom: 0.4rem;
+    }
+
+    .help__text {
+        margin-top: 1.9rem;
+    }
+}

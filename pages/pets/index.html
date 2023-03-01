@@ -12,11 +12,11 @@
     <section class="intro">
         <div class="container">
             <header class="header">
-                <a href="./../main/index.html">
+                <a href="./../main/index.html" id="logo">
                     <h1 class="header__logo">Cozy House</h1>
                     <p class="header__sublogo">Shelter for pets in Boston</p>
                 </a>
-                <nav class="header__nav">
+                <nav id="header_nav" class="header__nav">
                     <ul>
                         <li>
                             <a class="header__link" href="./../main/index.html">About the shelter</a>
@@ -32,6 +32,10 @@
                         </li>
                     </ul>
                 </nav>
+                <button type="button" id="burger_nav" class="burger-nav">
+                    <span class="burger-nav__item">Menu</span>
+                </button>
+                <div class="burger-menu"></div>
             </header>
         </div>
     </section>
@@ -82,7 +86,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="our-friends__item">
+                        <div class="our-friends__item hidden_mobile">
                             <div class="our-friends__card">
                                 <div class="our-friends__content">
                                     <div class="our-friends__photo">
@@ -96,7 +100,7 @@
                             </div>
                         </div>
                         <!-- Second line -->
-                        <div class="our-friends__item">
+                        <div class="our-friends__item hidden_mobile">
                             <div class="our-friends__card">
                                 <div class="our-friends__content">
                                     <div class="our-friends__photo">
@@ -109,7 +113,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="our-friends__item">
+                        <div class="our-friends__item hidden_mobile">
                             <div class="our-friends__card">
                                 <div class="our-friends__content">
                                     <div class="our-friends__photo">
@@ -122,7 +126,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="our-friends__item hidden">
+                        <div class="our-friends__item hidden_tablet">
                             <div class="our-friends__card">
                                 <div class="our-friends__content">
                                     <div class="our-friends__photo">
@@ -135,7 +139,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="our-friends__item hidden">
+                        <div class="our-friends__item hidden_tablet">
                             <div class="our-friends__card">
                                 <div class="our-friends__content">
                                     <div class="our-friends__photo">
@@ -209,5 +213,6 @@
             </div>
         </div>
     </footer>
+    <script src="./../../assets/js/general/app.js"></script>
 </body>
 </html>

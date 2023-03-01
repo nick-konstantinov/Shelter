@@ -32,7 +32,6 @@ burgerLogo.addEventListener('click', function(){
 });
 
 function closeOnClick() {
-    logo.classList.remove('hidden');
     burgerMenu.classList.remove("open");
     burgerBtn.classList.remove("active");
     body.classList.remove("noscroll");
