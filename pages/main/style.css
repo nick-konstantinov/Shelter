@@ -59,7 +59,7 @@ body {
     font-family: Arial, "Arimo", sans-serif;
 }
 
-body.noscroll {
+.noscroll {
     overflow: hidden;
 }
 
@@ -183,7 +183,7 @@ p {
     padding: 1.2rem 0;
     position: absolute;
     right: 5.3rem;
-    z-index: 2;
+    z-index: 1002;
 
     font-size: 0;
     color: transparent;
@@ -617,6 +617,20 @@ p {
     margin-top: 3.2rem;
 }
 
+/* Mask */
+
+.mask {
+    width: 100%;
+    height: 100%;
+
+    background: rgba(41, 41, 41, 0.6);
+
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+}
+
 
 /* --- Media --- */
 
@@ -888,7 +902,7 @@ p {
         position: fixed;
         top: 0;
         right: 0;
-        z-index: 1;
+        z-index: 1001;
         width: 32rem;
         height: 100%;
         transform: translateX(+100%);

@@ -3,13 +3,14 @@
 let burgerBtn = document.querySelector('#burger_nav');
 let burgerMenu = document.querySelector('.burger-menu');
 let logo = document.querySelector('#logo');
+let mask = document.querySelector('.mask');
 const body = document.body;
 
 burgerBtn.addEventListener('click', function(){
 	burgerBtn.classList.toggle('active');
 	burgerMenu.classList.toggle('open');
-    logo.classList.toggle('hidden');
     body.classList.toggle("noscroll");
+    mask.hidden = !mask.hidden;
     renderListLinks();
 })
 
@@ -31,8 +32,13 @@ burgerLogo.addEventListener('click', function(){
 	closeOnClick();
 });
 
+mask.addEventListener('click', function() {
+    closeOnClick();
+});
+
 function closeOnClick() {
     burgerMenu.classList.remove("open");
     burgerBtn.classList.remove("active");
     body.classList.remove("noscroll");
+    mask.hidden = !mask.hidden;
 }
