@@ -338,6 +338,10 @@ p {
     right: 0;
 }
 
+.btn_get {
+    margin-top: 0.2rem;
+}
+
 /* About */
 
 .about__inner {
@@ -376,6 +380,7 @@ p {
 
 .our-friends {
     background-color: #F6F6F6;
+    min-height: 85rem;
 }
 
 .our-friends__inner {
@@ -394,17 +399,45 @@ p {
 
 .our-friends__slider {
     position: relative;
+    display: flex;
+    justify-content: center;
     margin: 6rem 0 5.8rem;
+}
+
+.our-friends__slider-inner {
+    position: relative;
+    width: 105rem;
+    height: 43.5rem;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    overflow: hidden;
+}
+
+.our-friends__slider-slide {
+    position: absolute;
+    width: 99rem;
+    height: 43.5rem;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: space-between;
+
+    transition: all ease 0.8s;
+}
+
+.our-friends__item {
+    width: 270px;
+    display: inline-block;
 }
 
 .our-friends__card {
     width: 27rem;
     height: 43.5rem;
     background-color: #FAFAFA;
-    margin: 0 4.5rem;
+    margin: 0 3rem;
     border-radius: 0.9rem;
 }
 
@@ -417,8 +450,18 @@ p {
 }
 
 .our-friends__photo {
+    position: relative;
     width: 27rem;
     height: 27rem;
+    overflow: hidden;
+    border-radius: 0.9rem 0.9rem 0 0;
+}
+
+.our-friends__photo img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .our-friends__info {
@@ -431,7 +474,7 @@ p {
 
 .our-friends__name {
     font-family: Georgia, "Gelasio", serif;
-    padding-top: 2.7rem;
+    padding-top: 2.9rem;
     margin-bottom: 3.1rem;
     font-size: 2rem;
     line-height: 1.15;
@@ -636,7 +679,7 @@ p {
 
 /* @media (max-width: 1280px) */
 
-@media (max-width: 1279px) {
+@media (max-width: 1279.5px) {
 
     /* Help */
 
@@ -645,6 +688,23 @@ p {
         min-width: 17rem;
         min-height: 11.3rem;
     }
+
+    /* Button */
+
+    .btn_get {
+        margin-top: 0;
+    }
+
+    /* Our Friends */
+
+    .our-friends__slider-inner {
+        width: 62rem;
+    }
+
+    .our-friends__slider-slide {
+        width: 58rem;
+    }
+
 }
 
 /* @media (max-width: 1199px) */
@@ -687,10 +747,6 @@ p {
         font-size: 1.9rem;
         line-height: 1.136;
         padding-top: 3rem;
-    }
-
-    .hidden_w {
-        display: none;
     }
 
     /* Button */
@@ -990,8 +1046,16 @@ p {
 
     /* Our Friends */
 
-    .hidden_j {
-        display: none;
+    .our-friends {
+        min-height: 0;
+    }
+
+    .our-friends__slider-inner {
+        width: 33rem;
+    }
+
+    .our-friends__slider-slide {
+        width: 27rem;
     }
 
     /* Donation */
