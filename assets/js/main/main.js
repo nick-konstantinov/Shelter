@@ -1,4 +1,4 @@
-//Slider
+// Slider
 
 let pets = [
     {
@@ -199,36 +199,53 @@ function createSlideElemLeft(){
     return slide;
 }
 
-//Offset left if push button next
-function moveLeft() {
-    isAnimationDuring = true;
-    let slides = document.querySelectorAll('.our-friends__slider-slide');
-    let offsetSlide = 0;
+//Animation slides
+function animateSlides(slides, direction) {
+    const slideWidth = 1050;
+    const pixelsPerSecond = 100;
+    const pixelsPerInterval = 25;
+    const totalPixelsToMove = slideWidth;
+
+    let animationsCount = slides.length;
+
     for (let i = 0; i < slides.length; i++) {
-        slides[i].style.left = offsetSlide * 1050 - 1050 + 'px';
-        offsetSlide++;
+        let currentOffset = +slides[i].style.left.slice(0, -2);
+        let currentPixelsMoved = 0;
+
+        let slideInterval = setInterval(() => {
+            if (currentPixelsMoved === totalPixelsToMove) {
+                clearInterval(slideInterval);
+                animationsCount--;
+                if (animationsCount === 0) {
+                    slides[0].remove();
+                    isAnimationDuring = false;
+                }
+                return;
+            }
+            if (direction === 'right') {
+                currentOffset = currentOffset + pixelsPerInterval;
+            } else if (direction === 'left') {
+                currentOffset = currentOffset - pixelsPerInterval;
+            } else {
+                throw new Error('Invalid direction');
+            }
+            currentPixelsMoved += pixelsPerInterval;
+            slides[i].style.left = currentOffset + 'px';
+        }, 1000 / pixelsPerSecond);
+
     }
-    //then remove old slide
-    slides[0].addEventListener('transitionend', function() {
-        slides[0].remove();
-        isAnimationDuring = false;
-    }, {once: true});
 }
 
-//Offset right if push button previous
 function moveRight() {
     isAnimationDuring = true;
-    let slides = document.body.querySelectorAll('.our-friends__slider-slide');
-    let offsetSlide = 1;
-    for (let i = 0; i < slides.length; i++) {
-        slides[i].style.left = offsetSlide * 1050 + 'px';
-        offsetSlide--;
-    }
-    //then remove old slide
-    slides[0].addEventListener('transitionend', function() {
-        slides[0].remove();
-        isAnimationDuring = false;
-    }, {once: true});
+    const slides = document.body.querySelectorAll('.our-friends__slider-slide');
+    animateSlides(slides, 'right');
+}
+
+function moveLeft() {
+    isAnimationDuring = true;
+    const slides = document.body.querySelectorAll('.our-friends__slider-slide');
+    animateSlides(slides, 'left');
 }
 
 //Draw new card's elements
@@ -296,7 +313,3 @@ prevBtn.addEventListener('click', function() {
         moveRight();
     }
 });
-
-
-
-

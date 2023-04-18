@@ -421,11 +421,10 @@ p {
     height: 43.5rem;
     top: 0;
     left: 0;
+    z-index: auto;
 
     display: flex;
     justify-content: space-between;
-
-    transition: all ease 0.8s;
 }
 
 .our-friends__item {
@@ -672,6 +671,10 @@ p {
     top: 0;
     left: 0;
     z-index: 100;
+}
+
+.mask:hover {
+    cursor: pointer;
 }
 
 
