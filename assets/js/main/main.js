@@ -1,6 +1,6 @@
 // Slider
 
-let pets = [
+export const pets = [
     {
     "name": "Katrine",
     "img": "./../../assets/images/general/cards/pets-katrine.png",
@@ -91,7 +91,13 @@ let pets = [
     }
 ];
 
-let isAnimationDuring = false;
+export let mapPets = new Map();
+
+//Add id to pets
+for (let i = 0; i < pets.length; i++) {
+    pets[i].id = 'pet' + (i + 1);
+    mapPets.set(pets[i].id, pets[i]);
+}
 
 //Create new card's element
 function createElemCard(parentElem, tagName, className, textContent) {
@@ -114,15 +120,16 @@ function createCardsELem(arr) {
         itemElem.classList.add('our-friends__item');
 
         const cardElem = createElemCard(itemElem, 'div', 'our-friends__card', '');
+        cardElem.setAttribute('id', arr[i].id);
         const contentElem = createElemCard(cardElem, 'div', 'our-friends__content', '');
         const photoElem = createElemCard(contentElem, 'div', 'our-friends__photo', '');
         const imgElem = createElemCard(photoElem, 'img', 'img', '');
-        imgElem.setAttribute('src', pets[i].img);
-        imgElem.setAttribute('alt', pets[i].type);
+        imgElem.setAttribute('src', arr[i].img);
+        imgElem.setAttribute('alt', arr[i].type);
 
         const infoElem = createElemCard(contentElem, 'div', 'our-friends__info', '');
         const nameElem = createElemCard(infoElem, 'p', 'our-friends__name', '');
-        nameElem.innerHTML = pets[i].name;
+        nameElem.innerHTML = arr[i].name;
 
         const btnElem = createElemCard(infoElem, 'button', ['btn', 'btn-lrn'], 'Learn more');
         btnElem.setAttribute('type', 'button');
@@ -133,7 +140,7 @@ function createCardsELem(arr) {
 }
 
 //Quantity cards depending on the width window
-function quantityCards() {
+export function quantityCards() {
     let widthWidow = document.documentElement.clientWidth;
     const desktopWidth = 1280;
     const tabletWidth = 768;
@@ -161,6 +168,7 @@ function mixCards(arr) {
 
 //Mix all pet's cards before push slider's buttons or unlooad page
 let allPetsCardsMixed;
+// let quantity
 do {
     allPetsCardsMixed = mixCards(allPetsCards);
 } while (allPetsCardsMixed[3] === allPetsCards[0] ||
@@ -171,7 +179,9 @@ do {
          allPetsCardsMixed[4] === allPetsCards[2] ||
          allPetsCardsMixed[5] === allPetsCards[0] ||
          allPetsCardsMixed[5] === allPetsCards[1] ||
-         allPetsCardsMixed[5] === allPetsCards[2]
+         allPetsCardsMixed[5] === allPetsCards[2] ||
+         allPetsCardsMixed[2] === allPetsCards[0] ||
+         allPetsCardsMixed[2] === allPetsCards[1]
 );
 
 //Find slider's inner element
@@ -184,7 +194,9 @@ function createSlideElemRight(){
     let slide = document.createElement('div');
     slide.classList.add('our-friends__slider-slide');
     slide.style.left = offset * 1050 + 'px';
-    sliderElem.append(slide);
+    if (sliderElem) {
+        sliderElem.append(slide);
+    }
     offset = 1;
 
     return slide;
@@ -194,10 +206,17 @@ function createSlideElemLeft(){
     let slide = document.createElement('div');
     slide.classList.add('our-friends__slider-slide');
     slide.style.left = -1050 + 'px';
-    sliderElem.append(slide);
+    if (sliderElem) {
+        sliderElem.append(slide);
+    }
 
     return slide;
 }
+
+export let isAnimationDuring = false;
+
+import { drawModalWindow } from "../general/general.js";
+
 
 //Animation slides
 function animateSlides(slides, direction) {
@@ -219,6 +238,7 @@ function animateSlides(slides, direction) {
                 if (animationsCount === 0) {
                     slides[0].remove();
                     isAnimationDuring = false;
+                    drawModalWindow();
                 }
                 return;
             }
@@ -231,7 +251,7 @@ function animateSlides(slides, direction) {
             }
             currentPixelsMoved += pixelsPerInterval;
             slides[i].style.left = currentOffset + 'px';
-        }, 1000 / pixelsPerSecond);
+        }, 700 / pixelsPerSecond);
 
     }
 }
@@ -240,12 +260,14 @@ function moveRight() {
     isAnimationDuring = true;
     const slides = document.body.querySelectorAll('.our-friends__slider-slide');
     animateSlides(slides, 'right');
+    drawModalWindow();
 }
 
 function moveLeft() {
     isAnimationDuring = true;
     const slides = document.body.querySelectorAll('.our-friends__slider-slide');
     animateSlides(slides, 'left');
+    drawModalWindow();
 }
 
 //Draw new card's elements
@@ -254,7 +276,7 @@ const nextBtn = document.body.querySelector('.btn-slider_next');
 
 let current = quantityCards();
 
-function drawCardsElem(slide) {
+function drawCardsElem(slide, callback) {
     let amountCards = quantityCards();
 
     let moduloPart = allPetsCardsMixed.length % amountCards;
@@ -284,6 +306,7 @@ function drawCardsElem(slide) {
             current+=needToAdd;
         }
     }
+    callback();
 }
 
 //If DOM content loaded add card(s) on the page
@@ -297,19 +320,22 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 //If pushed next button - create new slide on the right, draw cards and shift left
-nextBtn.addEventListener('click', function() {
-    if (!isAnimationDuring) {
-        let slide = createSlideElemRight();
-        drawCardsElem(slide);
-        moveLeft();
-    }
-});
+if (nextBtn) {
+    nextBtn.addEventListener('click', function() {
+        if (!isAnimationDuring) {
+            let slide = createSlideElemRight();
+            drawCardsElem(slide, moveLeft);
+        }
+    });
+}
+
 
 //If pushed previous button - create new slide on the left, draw cards and shift right
-prevBtn.addEventListener('click', function() {
-    if (!isAnimationDuring) {
-        let slide = createSlideElemLeft();
-        drawCardsElem(slide);
-        moveRight();
-    }
-});
+if (prevBtn) {
+    prevBtn.addEventListener('click', function() {
+        if (!isAnimationDuring) {
+            let slide = createSlideElemLeft();
+            drawCardsElem(slide, moveRight);
+        }
+    });
+}
