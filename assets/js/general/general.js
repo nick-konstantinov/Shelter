@@ -1,14 +1,12 @@
+"use strict";
 // General global variables
-
 const mask = document.querySelector('.mask');
 const body = document.body;
 const modal = document.querySelector('.modal');
 
 // Burger Menu
-
 let burgerBtn = document.querySelector('#burger_nav');
 let burgerMenu = document.querySelector('.burger-menu');
-let logo = document.querySelector('#logo');
 
 burgerBtn.addEventListener('click', function(){
 	burgerBtn.classList.toggle('active');
@@ -45,7 +43,6 @@ if (mask) {
     });
 }
 
-
 function closeOnClick() {
     burgerMenu.classList.remove("open");
     burgerBtn.classList.remove("active");
@@ -54,25 +51,39 @@ function closeOnClick() {
 }
 
 // Popup
+import { mapPets } from "./data-pets.js";
 
-import { pets } from "../main/main.js";
-import { mapPets } from "../main/main.js";
-import { isAnimationDuring } from "../main/main.js";
-import { quantityCards } from "../main/main.js";
-
-
-export function drawModalWindow() {
+/* export function drawModalWindow() {
     let items = document.body.getElementsByClassName('our-friends__card');
     let count = quantityCards();
-    for (let i = 0; i < count ; i++) {
-        items[i].addEventListener('click', function() {
-            mask.hidden = !mask.hidden;
-            modal.hidden = !modal.hidden;
-            body.classList.toggle("noscroll");
-            fillModalContent(mapPets, items[i].id);
-        });
+    if (items) {
+        for (let i = 0; i < count ; i++) {
+            items[i].addEventListener('click', function() {
+                mask.hidden = !mask.hidden;
+                modal.hidden = !modal.hidden;
+                body.classList.toggle("noscroll");
+                fillModalContent(mapPets, items[i].id);
+            });
+        }
     }
+} */
+
+export function drawModalWindow() {
+    const sliderElem = document.querySelector('.our-friends__slider-inner');
+    sliderElem.addEventListener('click', function(event) {
+        let cardElem = event.target.closest('.our-friends__card');
+
+        if (!cardElem) return;
+
+        if (!sliderElem.contains(cardElem)) return;
+
+        mask.hidden = !mask.hidden;
+        modal.hidden = !modal.hidden;
+        body.classList.toggle("noscroll");
+        fillModalContent(mapPets, cardElem.dataset.number);
+    });
 }
+
 
 function fillModalContent(map, key) {
     let currentPet = map.get(key);
