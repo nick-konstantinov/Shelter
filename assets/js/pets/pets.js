@@ -236,7 +236,7 @@ window.addEventListener('DOMContentLoaded', function() {
 });
 
 window.addEventListener('resize', function() {
-    location.reload()
+    location.reload();
 }, false);
 
 

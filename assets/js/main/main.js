@@ -225,6 +225,10 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+window.addEventListener('resize', function() {
+    location.reload();
+});
+
 //If pushed next button - create new slide on the right, draw cards and shift left
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
