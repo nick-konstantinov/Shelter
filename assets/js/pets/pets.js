@@ -21,7 +21,7 @@ function quantityCardsPets() {
     return countCards;
 }
 
-//Create new card's element
+// Create slider element
 function createElemCard(parentElem, tagName, className, textContent) {
     const newElem = document.createElement(tagName);
     if (Array.isArray(className)) {
@@ -34,17 +34,19 @@ function createElemCard(parentElem, tagName, className, textContent) {
     return newElem;
 }
 
-//Create card's element
+// Create slider elements
 function createCardsELem(arr) {
-    let newArr = [];
+    let cards = [];
     for (let i = 0; i < arr.length; i++) {
         const itemElem = document.createElement('div');
         itemElem.classList.add('our-friends__item');
 
         const cardElem = createElemCard(itemElem, 'div', 'our-friends__card', '');
         cardElem.setAttribute('data-number', arr[i].num);
+
         const contentElem = createElemCard(cardElem, 'div', 'our-friends__content', '');
         const photoElem = createElemCard(contentElem, 'div', 'our-friends__photo', '');
+
         const imgElem = createElemCard(photoElem, 'img', 'img', '');
         imgElem.setAttribute('src', arr[i].img);
         imgElem.setAttribute('alt', arr[i].type);
@@ -56,15 +58,14 @@ function createCardsELem(arr) {
         const btnElem = createElemCard(infoElem, 'button', ['btn', 'btn-lrn'], 'Learn more');
         btnElem.setAttribute('type', 'button');
 
-        newArr.push(itemElem);
+        cards.push(itemElem);
     }
-    return newArr;
+    return cards;
 }
 
-//Make a total array for pets
+// Make a total pets array
 let totalPets = 48;
 let allPets = [];
-
 let count = totalPets / pets.length;
 
 while(count) {
@@ -74,11 +75,10 @@ while(count) {
     count--;
 }
 
-//Devide total array into parts depending on quantity cards
+// Devide total pets array into parts depending on quantity cards
 let cardsMap = new Map();
 let currentSubArray = [];
 let countPage = 1;
-
 let countCardPerPage = quantityCardsPets();
 
 function createCardsMap() {
@@ -98,8 +98,6 @@ function createCardsMap() {
     }
 }
 
-console.log(cardsMap);
-
 const list = document.querySelector('.our-friends__slider-list');
 
 function appendCardsToPage() {
@@ -118,7 +116,6 @@ function appendCardsToPage() {
         list.append(slide);
     }
 }
-
 
 function mathWidthSliderBoxElem() {
     let count = quantityCardsPets();
@@ -141,7 +138,6 @@ function mathPositionEnd() {
 
     if (count === 8) {
         offsetEndValue = 6000;
-
     } else if (count === 6) {
         offsetEndValue = 4200;
     } else {
@@ -154,9 +150,8 @@ function mathPositionEnd() {
 let widthSliderBoxElem = mathWidthSliderBoxElem();
 let offsetEndValue = mathPositionEnd();
 
-console.log(widthSliderBoxElem);
+// Current changed slides element position
 let position = 0;
-
 
 function moveLeft() {
     position -= widthSliderBoxElem;
@@ -180,9 +175,9 @@ function moveStart() {
     list.style.marginLeft = position + 'px';
 }
 
+// Current pagination element number
 const paginationNumberElem = document.querySelector('.our-friends__pagination-number');
 let paginationNumber = 1;
-
 
 function changePaginationNumberNext() {
     if (paginationNumber < allPets.length / quantityCardsPets()) {
@@ -206,6 +201,8 @@ function changePaginationNumberStart() {
     paginationNumberElem.innerHTML = paginationNumber;
 }
 
+// Disable buttons left or right when position limit achived
+
 function checkEndPaginationNumber() {
     if(position === -offsetEndValue) {
         btnNext.setAttribute("disabled", "disabled");
@@ -226,20 +223,19 @@ function checkStartPaginationNumber() {
     }
 }
 
-
-
-
+// If DOM content loaded show cards and check pagination number
 window.addEventListener('DOMContentLoaded', function() {
     createCardsMap()
     appendCardsToPage();
     checkStartPaginationNumber();
 });
 
+// Add listener for global window element, when resize window reload page
 window.addEventListener('resize', function() {
     location.reload();
 }, false);
 
-
+// If navigation buttons pushed - shift left/right, change and check pagination number
 const btnNext = document.querySelector('.our-friends__btn_next');
 const btnPrev = document.querySelector('.our-friends__btn_prev');
 const btnNextEnd = document.querySelector('.our-friends__btn_next-end');
@@ -273,19 +269,3 @@ btnPrevStart.addEventListener('click', function() {
     checkEndPaginationNumber();
     checkStartPaginationNumber();
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

@@ -91,8 +91,9 @@ export const pets = [
 
 export let mapPets = new Map();
 
-//Add id to pets
+//Fill map where key - pet number, value - pet
 for (let i = 0; i < pets.length; i++) {
     pets[i].num = 'pet' + (i + 1);
     mapPets.set(pets[i].num, pets[i]);
 }
+

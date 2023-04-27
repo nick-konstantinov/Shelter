@@ -19,21 +19,24 @@ burgerBtn.addEventListener('click', function(){
 const menu = document.querySelector("#header_nav").cloneNode(1);
 const burgerLogo = document.querySelector("#logo").cloneNode(1);
 
+// Add a menu, burgerLogo child nodes to burgerMenu node
 function renderListLinks() {
     burgerMenu.appendChild(menu);
     burgerMenu.appendChild(burgerLogo);
 }
 
+// Add listeners for links to close burger menu
 const links = Array.from(menu.children);
-
 links.forEach((link) => {
     link.addEventListener("click", closeOnClick);
 });
 
+// Add listener for burgerLogo to close burger menu
 burgerLogo.addEventListener('click', function(){
 	closeOnClick();
 });
 
+// Add listener for mask to close burger menu and hide mask and modal
 if (mask) {
     mask.addEventListener('click', function() {
         closeOnClick();
@@ -43,6 +46,7 @@ if (mask) {
     });
 }
 
+// Change styles when burgermenu is closed
 function closeOnClick() {
     burgerMenu.classList.remove("open");
     burgerBtn.classList.remove("active");
@@ -53,21 +57,7 @@ function closeOnClick() {
 // Popup
 import { mapPets } from "./data-pets.js";
 
-/* export function drawModalWindow() {
-    let items = document.body.getElementsByClassName('our-friends__card');
-    let count = quantityCards();
-    if (items) {
-        for (let i = 0; i < count ; i++) {
-            items[i].addEventListener('click', function() {
-                mask.hidden = !mask.hidden;
-                modal.hidden = !modal.hidden;
-                body.classList.toggle("noscroll");
-                fillModalContent(mapPets, items[i].id);
-            });
-        }
-    }
-} */
-
+// Show modal window
 export function drawModalWindow() {
     const sliderElem = document.querySelector('.our-friends__slider-inner');
     sliderElem.addEventListener('click', function(event) {
@@ -84,7 +74,7 @@ export function drawModalWindow() {
     });
 }
 
-
+// Add content to modal window
 function fillModalContent(map, key) {
     let currentPet = map.get(key);
 
@@ -117,13 +107,13 @@ function fillModalContent(map, key) {
     parasitesElem.innerHTML = currentPet.parasites;
 }
 
-//If DOM content loaded add card(s) on the page
+// Add listener for window, when page loaded call drawModalWindow function
 window.addEventListener('DOMContentLoaded', function() {
     drawModalWindow();
 });
 
+// Add listener for cross to close modal window
 const cross = document.querySelector('.modal__cross');
-
 if (cross) {
     cross.addEventListener('click', function() {
         modal.hidden = !modal.hidden;
@@ -132,6 +122,7 @@ if (cross) {
     });
 }
 
+// Add listener for mask when mouseenter event to add hover for cross
 if (mask) {
     mask.addEventListener('mouseenter', function() {
         if (cross) {
@@ -140,6 +131,7 @@ if (mask) {
     });
 }
 
+// Add listener for mask when mouseleave event to remove hover for cross
 if (mask) {
     mask.addEventListener('mouseleave', function() {
         if (cross) {
@@ -147,4 +139,3 @@ if (mask) {
         }
     });
 }
-

@@ -385,8 +385,6 @@ p {
 /* Our Friends Keyboard */
 
 .our-friends__slider-buttons {
-    /* position: relative;
-    top: 2.5rem; */
     max-width: 34rem;
     margin: 2.85rem auto 0;
 }
@@ -731,13 +729,6 @@ p {
 
     /* Our Friends */
 
-    /* .our-friends__slider-inner {
-        justify-content: flex-start;
-        width: 89rem;
-        margin-left: auto;
-        margin-right: auto;
-    } */
-
     .our-friends__slider {
         margin: 2.9rem 0 5.8rem;
     }
@@ -765,10 +756,6 @@ p {
         width: 60rem;
         height: 137rem;
     }
-
-    /* .our-friends__item {
-        margin-left: 2rem;
-    } */
 
     .our-friends__name {
         padding-top: 3rem;
@@ -948,7 +935,6 @@ p {
     }
 
     .our-friends__slider-list {
-        /* width: 467rem; */
         height: 137rem;
     }
 

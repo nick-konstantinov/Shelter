@@ -3,7 +3,7 @@
 
 import { pets } from "../general/data-pets.js";
 
-//Create new card's element
+// Create slider element
 function createElemCard(parentElem, tagName, className, textContent) {
     const newElem = document.createElement(tagName);
     if (Array.isArray(className)) {
@@ -16,17 +16,19 @@ function createElemCard(parentElem, tagName, className, textContent) {
     return newElem;
 }
 
-//Create card's element
+// Create slider elements
 function createCardsELem(arr) {
-    let newArr = [];
+    let cards = [];
     for (let i = 0; i < arr.length; i++) {
         const itemElem = document.createElement('div');
         itemElem.classList.add('our-friends__item');
 
         const cardElem = createElemCard(itemElem, 'div', 'our-friends__card', '');
         cardElem.setAttribute('data-number', arr[i].num);
+
         const contentElem = createElemCard(cardElem, 'div', 'our-friends__content', '');
         const photoElem = createElemCard(contentElem, 'div', 'our-friends__photo', '');
+
         const imgElem = createElemCard(photoElem, 'img', 'img', '');
         imgElem.setAttribute('src', arr[i].img);
         imgElem.setAttribute('alt', arr[i].type);
@@ -38,41 +40,40 @@ function createCardsELem(arr) {
         const btnElem = createElemCard(infoElem, 'button', ['btn', 'btn-lrn'], 'Learn more');
         btnElem.setAttribute('type', 'button');
 
-        newArr.push(itemElem);
+        cards.push(itemElem);
     }
-    return newArr;
+    return cards;
 }
 
-//Quantity cards depending on the width window
+// Get quantity cards depending on the window width
 export function quantityCards() {
     let widthWidow = document.documentElement.clientWidth;
     const desktopWidth = 1280;
     const tabletWidth = 768;
     let countCards;
 
-    if(widthWidow >= desktopWidth) {
+    if (widthWidow >= desktopWidth) {
         countCards = 3;
     } else if (widthWidow >= tabletWidth) {
         countCards = 2;
     } else {
         countCards = 1;
     }
-
     return countCards;
 }
 
-//Create cards collection
+// Create cards
 let allPetsCards = createCardsELem(pets);
 
-//Mix all pet's cards
+// Mix all cards
 function mixCards(arr) {
     let newArr = arr.slice().sort(() => Math.random() - 0.5);
     return newArr;
 }
 
-//Mix all pet's cards before push slider's buttons or unlooad page
+// Mix all cards before push slider's buttons or relooad page
+// Mix all cards if next and previous slides have duplicates
 let allPetsCardsMixed;
-// let quantity
 do {
     allPetsCardsMixed = mixCards(allPetsCards);
 } while (allPetsCardsMixed[3] === allPetsCards[0] ||
@@ -88,14 +89,12 @@ do {
          allPetsCardsMixed[2] === allPetsCards[1]
 );
 
-//Find slider's inner element
-const getSliderElem = () => document.body.querySelector('.our-friends__slider-inner');
+// Find slider's inner element
+const sliderElem = document.querySelector('.our-friends__slider-inner');
 
-const sliderElem = getSliderElem();
 
+// Create slider's slide elements on the right
 let offset = 0;
-
-//Create slider's slide elements
 function createSlideElemRight(){
     let slide = document.createElement('div');
     slide.classList.add('our-friends__slider-slide');
@@ -108,6 +107,7 @@ function createSlideElemRight(){
     return slide;
 }
 
+// Create slider's slide elements on the left
 function createSlideElemLeft(){
     let slide = document.createElement('div');
     slide.classList.add('our-friends__slider-slide');
@@ -119,19 +119,19 @@ function createSlideElemLeft(){
     return slide;
 }
 
-export let isAnimationDuring = false;
-
 import { drawModalWindow } from "../general/general.js";
 
+// Flag for animation control
+let isAnimationDuring = false;
 
-//Animation slides
+// Animate slides
 function animateSlides(slides, direction) {
     const slideWidth = 1050;
+    const totalPixelsToMove = slideWidth;
     const pixelsPerSecond = 100;
     const pixelsPerInterval = 25;
-    const totalPixelsToMove = slideWidth;
 
-    let animationsCount = slides.length;
+    let slidesCount = slides.length;
 
     for (let i = 0; i < slides.length; i++) {
         let currentOffset = +slides[i].style.left.slice(0, -2);
@@ -140,8 +140,8 @@ function animateSlides(slides, direction) {
         let slideInterval = setInterval(() => {
             if (currentPixelsMoved === totalPixelsToMove) {
                 clearInterval(slideInterval);
-                animationsCount--;
-                if (animationsCount === 0) {
+                slidesCount--;
+                if (slidesCount === 0) {
                     slides[0].remove();
                     isAnimationDuring = false;
                     drawModalWindow();
@@ -152,16 +152,15 @@ function animateSlides(slides, direction) {
                 currentOffset = currentOffset + pixelsPerInterval;
             } else if (direction === 'left') {
                 currentOffset = currentOffset - pixelsPerInterval;
-            } else {
-                throw new Error('Invalid direction');
             }
+
             currentPixelsMoved += pixelsPerInterval;
             slides[i].style.left = currentOffset + 'px';
         }, 700 / pixelsPerSecond);
-
     }
 }
 
+// Move slides to the right side
 function moveRight() {
     isAnimationDuring = true;
     const slides = document.body.querySelectorAll('.our-friends__slider-slide');
@@ -169,6 +168,7 @@ function moveRight() {
     drawModalWindow();
 }
 
+// Move slides to the left side
 function moveLeft() {
     isAnimationDuring = true;
     const slides = document.body.querySelectorAll('.our-friends__slider-slide');
@@ -176,11 +176,10 @@ function moveLeft() {
     drawModalWindow();
 }
 
-//Draw new card's elements
+// Draw new card's elements
 const prevBtn = document.body.querySelector('.btn-slider_prev');
 const nextBtn = document.body.querySelector('.btn-slider_next');
-
-let current = quantityCards();
+let currentQuantityCards = quantityCards();
 
 function drawCardsElem(slide, callback) {
     let amountCards = quantityCards();
@@ -188,34 +187,37 @@ function drawCardsElem(slide, callback) {
     let moduloPart = allPetsCardsMixed.length % amountCards;
     let wholePart = Math.trunc(allPetsCardsMixed.length / amountCards);
 
-    if (amountCards * wholePart > current) {
-        for (let i = current; i < current + amountCards; i++) {
+    if (amountCards * wholePart > currentQuantityCards) {
+        for (let i = currentQuantityCards; i < currentQuantityCards + amountCards; i++) {
             slide.append(allPetsCardsMixed[i]);
         }
-        current+=amountCards;
+        currentQuantityCards+=amountCards;
     } else {
         let addedCount = 0;
-        for (let i = current; i < current + moduloPart; i++) {
-            if ((current + 1) < allPetsCardsMixed.length) {
+
+        // Append slides (count = moduloPart)
+        for (let i = currentQuantityCards; i < currentQuantityCards + moduloPart; i++) {
+            if ((currentQuantityCards + 1) < allPetsCardsMixed.length) {
                 addedCount++;
                 slide.append(allPetsCardsMixed[i]);
             }
         }
-        current+=addedCount;
+        currentQuantityCards += addedCount;
 
+        // If added cards count less then should be on the page, add cards from array start elements
         if (addedCount < amountCards) {
-            current = 0;
+            currentQuantityCards = 0;
             let needToAdd = amountCards - addedCount;
-            for (let i = current; i < needToAdd; i++) {
+            for (let i = currentQuantityCards; i < needToAdd; i++) {
                 slide.append(allPetsCardsMixed[i]);
             }
-            current+=needToAdd;
+            currentQuantityCards += needToAdd;
         }
     }
     callback();
 }
 
-//If DOM content loaded add card(s) on the page
+// If DOM content loaded add card(s) on the page
 window.addEventListener('DOMContentLoaded', function() {
     let currentCountCards = quantityCards();
     let slide = createSlideElemRight();
@@ -225,11 +227,12 @@ window.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// Add listener for global window element, when resize window reload page
 window.addEventListener('resize', function() {
     location.reload();
 });
 
-//If pushed next button - create new slide on the right, draw cards and shift left
+// If pushed next button - create new slide on the right, draw cards and shift left
 if (nextBtn) {
     nextBtn.addEventListener('click', function() {
         if (!isAnimationDuring) {
@@ -239,8 +242,7 @@ if (nextBtn) {
     });
 }
 
-
-//If pushed previous button - create new slide on the left, draw cards and shift right
+// If pushed previous button - create new slide on the left, draw cards and shift right
 if (prevBtn) {
     prevBtn.addEventListener('click', function() {
         if (!isAnimationDuring) {
