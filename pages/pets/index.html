@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Our Pets</title>
+</head>
+<body>
+    <!-- Intro -->
+    <section class="intro">
+        <div class="container">
+            <header class="header">
+                <a href="./../main/index.html" id="logo">
+                    <h1 class="header__logo">Cozy House</h1>
+                    <p class="header__sublogo">Shelter for pets in Boston</p>
+                </a>
+                <nav id="header_nav" class="header__nav">
+                    <ul>
+                        <li>
+                            <a class="header__link" href="./../main/index.html">About the shelter</a>
+                        </li>
+                        <li>
+                            <a class="header__link header__link-target" href="#">Our pets</a>
+                        </li>
+                        <li>
+                            <a class="header__link" href="./../main/index.html#help">Help the shelter</a>
+                        </li>
+                        <li>
+                            <a class="header__link" href="#footer">Contacts</a>
+                        </li>
+                    </ul>
+                </nav>
+                <button type="button" id="burger_nav" class="burger-nav">
+                    <span class="burger-nav__item">Menu</span>
+                </button>
+                <div class="burger-menu"></div>
+            </header>
+        </div>
+    </section>
+    <!-- Our Friends -->
+    <section class="our-friends">
+        <div class="container">
+            <div class="our-friends__inner">
+                <h3 class="our-friends__title">Our friends who <br> are looking for a house</h3>
+                <div class="our-friends__slider">
+                    <div class="our-friends__slider-inner">
+                        <div class="our-friends__slider-box">
+                            <div class="our-friends__slider-list">
+                                    <!-- <div class="our-friends__item">
+                                        <div class="our-friends__card">
+                                            <div class="our-friends__content">
+                                                <div class="our-friends__photo">
+                                                    <img src="./../../assets/images/general/cards/pets-katrine.png" alt="cat katrine">
+                                                </div>
+                                                <div class="our-friends__info">
+                                                    <p class="our-friends__name">Katrine</p>
+                                                    <a class="btn btn-lrn" href="#">Learn more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="our-friends__item">
+                                        <div class="our-friends__card">
+                                            <div class="our-friends__content">
+                                                <div class="our-friends__photo">
+                                                    <img src="./../../assets/images/general/cards/pets-jennifer.png" alt="dog jennifer">
+                                                </div>
+                                                <div class="our-friends__info">
+                                                    <p class="our-friends__name">Jennifer</p>
+                                                    <a class="btn btn-lrn" href="#">Learn more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="our-friends__item">
+                                        <div class="our-friends__card">
+                                            <div class="our-friends__content">
+                                                <div class="our-friends__photo">
+                                                    <img src="./../../assets/images/general/cards/pets-woody.png" alt="dog woody">
+                                                </div>
+                                                <div class="our-friends__info">
+                                                    <p class="our-friends__name">Woody</p>
+                                                    <a class="btn btn-lrn" href="#">Learn more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="our-friends__item hidden_mobile">
+                                        <div class="our-friends__card">
+                                            <div class="our-friends__content">
+                                                <div class="our-friends__photo">
+                                                    <img class="scale" src="./../../assets/images/general/cards/pets-sophia.png" alt="dog sophia">
+                                                </div>
+                                                <div class="our-friends__info">
+                                                    <p class="our-friends__name">Sophia</p>
+                                                    <a class="btn btn-lrn" href="#">Learn more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="our-friends__item hidden_mobile">
+                                        <div class="our-friends__card">
+                                            <div class="our-friends__content">
+                                                <div class="our-friends__photo">
+                                                    <img src="./../../assets/images/general/cards/pets-timmy.png" alt="cat timmy">
+                                                </div>
+                                                <div class="our-friends__info">
+                                                    <p class="our-friends__name">Timmy</p>
+                                                    <a class="btn btn-lrn" href="#">Learn more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="our-friends__item hidden_mobile">
+                                        <div class="our-friends__card">
+                                            <div class="our-friends__content">
+                                                <div class="our-friends__photo">
+                                                    <img src="./../../assets/images/general/cards/pets-charly.png" alt="dog charly">
+                                                </div>
+                                                <div class="our-friends__info">
+                                                    <p class="our-friends__name">Charly</p>
+                                                    <a class="btn btn-lrn" href="#">Learn more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="our-friends__item hidden_tablet">
+                                        <div class="our-friends__card">
+                                            <div class="our-friends__content">
+                                                <div class="our-friends__photo">
+                                                    <img src="./../../assets/images/general/cards/pets-scarlet.png" alt="dog scarlett">
+                                                </div>
+                                                <div class="our-friends__info">
+                                                    <p class="our-friends__name">Scarlett</p>
+                                                    <a class="btn btn-lrn" href="#">Learn more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="our-friends__item hidden_tablet">
+                                        <div class="our-friends__card">
+                                            <div class="our-friends__content">
+                                                <div class="our-friends__photo">
+                                                    <img src="./../../assets/images/general/cards/pets-freddie.png" alt="cat freddie">
+                                                </div>
+                                                <div class="our-friends__info">
+                                                    <p class="our-friends__name">Freddie</p>
+                                                    <a class="btn btn-lrn" href="#">Learn more</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+
+                    <!-- Slider Keyboard -->
+                    <div class="our-friends__slider-buttons">
+                        <div class="our-friends__slider-keyboard">
+                            <button type="button" class="our-friends__btn our-friends__btn_prev-start">
+                                <span>&#60;&#60;</span>
+                            </button>
+                            <button type="button" class="our-friends__btn our-friends__btn_prev">
+                                <span>&#60;</span>
+                            </button>
+                            <div class="our-friends__pagination">
+                                <h4 class="our-friends__pagination-number">1</h4>
+                            </div>
+                            <button type="button" class="our-friends__btn our-friends__btn_next">
+                                <span>&#62;</span>
+                            </button>
+                            <button type="button" class="our-friends__btn our-friends__btn_next-end">
+                                <span>&#62;&#62;</span>
+                            </button>
+                        </div>
+                    </div>
+                </div><!-- /.slider -->
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer id="footer" class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer__item">
+                    <address class="footer__content">
+                        <h3 class="footer__title">For questions and suggestions</h3>
+                        <a class="footer__email" href="mailto:email@shelter.com" target="_blank">
+                            <img src="./../../assets/icons/icon-email.svg" alt="icon email">
+                            <span class="footer__email-name">email@shelter.com</span>
+                        </a>
+                        <a class="footer__phone" href="tel:email@shelter.com" target="_blank">
+                            <img src="./../../assets/icons/icon-phone.svg" alt="icon phone">
+                            <span class="footer__phone-number">+13 674 567 75 54</span>
+                        </a>
+                    </address>
+                </div>
+                <div class="footer__item">
+                    <address class="footer__content footer__content_map">
+                        <h3 class="footer__title">We are waiting for your visit</h3>
+                        <a class="footer__address" href="https://goo.gl/maps/DjoTCCMLx7L1uYtL9" target="_blank">
+                            <img src="./../../assets/icons/icon-marker.png" alt="icon email">
+                            <span class="footer__address-name">1 Central Street, Boston (entrance from the store)</span>
+                        </a>
+                        <a class="footer__address" href="https://goo.gl/maps/ba7raUpjBYeXNeR97" target="_blank">
+                            <img src="./../../assets/icons/icon-marker.png" alt="icon phone">
+                            <span class="footer__address-name">18 South Park, London </span>
+                        </a>
+                    </address>
+                </div>
+                <div class="footer__item">
+                    <img class="footer__img" src="./../../assets/images/general/footer-puppy.png" alt="puppy">
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Mask -->
+    <div class="mask" hidden></div>
+
+    <!-- Modal -->
+    <div class="modal" hidden>
+        <div class="modal__inner">
+            <div class="modal__photo">
+                <img src="./../../assets/images/general/cards/pets-jennifer.png" alt="dog">
+            </div>
+            <div class="modal__info">
+                <h3 class="modal__name">Jennifer</h3>
+                <h4 class="modal__type">Dog</h4>
+                <span>&nbsp;-</span>
+                <h4 class="modal__breed">Labrador</h4>
+                <p class="modal__description">Jennifer is a sweet 2 months old Labrador that is patiently waiting to find a new forever home. This girl really enjoys being able to go outside to run and play, but won't hesitate to play up a storm in the house if she has all of her favorite toys.</p>
+                <ul class="modal__feature">
+                    <li class="modal__point"><span class="bold">Age:&nbsp;</span><span class="modal__age">2 months</span></li>
+                    <li class="modal__point"><span class="bold">Inoculations:&nbsp;</span><span class="modal__inoculations">none</span></li>
+                    <li class="modal__point"><span class="bold">Diseases:&nbsp;</span><span class="modal__diseases">none</span></li>
+                    <li class="modal__point"><span class="bold">Parasites:&nbsp;</span><span class="modal__parasites">none</span></li>
+                </ul>
+            </div>
+        </div>
+        <div class="modal__cross"></div>
+    </div>
+
+    <script type="module" src="./../../assets/js/general/general.js"></script>
+    <script type="module" src="./../../assets/js/pets/pets.js"></script>
+
+</body>
+</html>
